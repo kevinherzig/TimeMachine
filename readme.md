@@ -1,9 +1,7 @@
 # TimeMachine
 ## Radio Controlled Clock Synchronization with a 2M range
 
-![enter image description here](https://share.icloud.com/photos/0ovHpJlWq_fS7lH9GW5bUdTlQ)
-
-
+![The TimeMachine](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachineBoard.jpg?raw=true)
 #### Features
  - Supports both NTP and GPS time sync and auto-switches between them (GPS priority)
  - When in GPS mode uses the GPS PPS (Pulse Per Second) to control modulation exactly in sync with GPS
