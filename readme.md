@@ -1,7 +1,7 @@
 # TimeMachine
 ## Radio Controlled Clock Synchronization with a 2M range
 
-
+![The TimeMachine](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachine.gif?raw=true)
 #### Features
  - Supports both NTP and GPS time sync and auto-switches between them (GPS priority)
  - When in GPS mode uses the GPS PPS (Pulse Per Second) to control modulation exactly in sync with GPS
@@ -21,3 +21,12 @@ After trying several boards I found that the Heltech WIFI 32 board was almost pe
 
 ### The board
 ![The TimeMachine](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachineBoard.jpg?raw=true)
+
+### The Schematic
+![enter image description here](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachineSchematic.png?raw=true)
+
+### Parts List
+
+
+
+
