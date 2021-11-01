@@ -27,6 +27,14 @@ After trying several boards I found that the Heltech WIFI 32 board was almost pe
 
 ### Parts List
 
+[Heltec WiFi Kit 32 with OLED Screen](https://www.amazon.com/HiLetgo-Display-Bluetooth-Internet-Development/dp/B07DKD79Y9/)
 
+[MCP41100-I/P Dual Digital Potentiometer](https://www.digikey.com/en/products/detail/microchip-technology/MCP42100-I-P/362090)
 
+[LM358 OpAmp](https://www.amazon.com/gp/product/B077BR9KT2/)
 
+[AD9833 Programmable Signal Generator Breakout Board](https://www.amazon.com/gp/product/B08PZ5FR51)
+
+[NEO 6M GPS ](https://www.amazon.com/gp/product/B07P8YMVNT/)
+
+[60Khz tuned antenna](https://www.amazon.com/gp/product/B07PK7WJYR/)
