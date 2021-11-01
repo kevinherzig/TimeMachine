@@ -1,7 +1,7 @@
 # TimeMachine
 ## Radio Controlled Clock Synchronization with a 2M range
 
-![The TimeMachine](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachineBoard.jpg?raw=true)
+
 #### Features
  - Supports both NTP and GPS time sync and auto-switches between them (GPS priority)
  - When in GPS mode uses the GPS PPS (Pulse Per Second) to control modulation exactly in sync with GPS
@@ -20,3 +20,4 @@ Over the past few years I've looked at some of the options out there to broadcas
 After trying several boards I found that the Heltech WIFI 32 board was almost perfect for this task.   Based on the ESP32 architecture, it is dual core and has a lot of RAM. It has an OLED display built in which would allow me to program a status display which would allow me to see what the system was doing at any given time.  
 
 ### The board
+![The TimeMachine](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachineBoard.jpg?raw=true)
