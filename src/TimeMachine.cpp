@@ -33,7 +33,9 @@ int timeZoneOffsetHours = -5;
 // GPS config.  If you don't use a GPS then
 // the system will never get a pulse AND the GPS
 // serial monitor code will never get invoked.
-static const int RXPin = 16, TXPin = 17, PPSPin = 23;
+// Note that we don't use TX Pin, we have nothing to 
+// say to the GPS.
+static const int RXPin = 5, TXPin = 19, PPSPin = 17;
 static const uint32_t GPSBaud = 9600;
 SoftwareSerial gpsSerialPort(RXPin, TXPin);
 NMEAGPS gpsInterpreter;

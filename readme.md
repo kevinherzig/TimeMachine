@@ -17,9 +17,9 @@ TimeMachine is a project I've been thinking about for years.  I have several WWV
 
 Over the past few years I've looked at some of the options out there to broadcast a simulated WWVB signal.  There are many open source projects on Github that use various methods to accomplish this.  There is even an iPhone app that uses the iPhone speaker to generate enough of a signal that it can sync the correct time.  All of these required taking down the clocks and placing them very close to whichever device was transmitting.  Many of the projects were incomplete with non-working code or hardware.  Some were based on Arduino boards that had no RTC or wifi so could only send a pre-programmed time.
 
-After trying several boards I found that the Heltech WIFI 32 board was almost perfect for this task.   Based on the ESP32 architecture, it is dual core and has a lot of RAM. It has an OLED display built in which would allow me to program a status display which would allow me to see what the system was doing at any given time.  
+After trying several boards I found that the Heltech WIFI 32 board is perfect for this task.   Based on the ESP32 architecture, it is dual core and has a lot of RAM. Heltech designed a board that has an OLED display built in which would allow me to program a status display which would allow me to see what the system was doing at any given time.  
 
-### The board
+### The board - based on the Heltec Wifi Kit 32
 ![The TimeMachine](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachineBoard.jpg?raw=true)
 
 ### The Schematic
