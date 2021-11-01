@@ -17,12 +17,26 @@ TimeMachine is a project I've been thinking about for years.  I have several WWV
 
 Over the past few years I've looked at some of the options out there to broadcast a simulated WWVB signal.  There are many open source projects on Github that use various methods to accomplish this.  There is even an iPhone app that uses the iPhone speaker to generate enough of a signal that it can sync the correct time.  All of these required taking down the clocks and placing them very close to whichever device was transmitting.  Many of the projects were incomplete with non-working code or hardware.  Some were based on Arduino boards that had no RTC or wifi so could only send a pre-programmed time.
 
-After trying several boards I found that the Heltech WIFI 32 board is perfect for this task.   Based on the ESP32 architecture, it is dual core and has a lot of RAM. Heltech designed a board that has an OLED display built in which would allow me to program a status display which would allow me to see what the system was doing at any given time.  
+After trying several boards I found that the Heltech WIFI 32 board was almost perfect for this task.   Based on the ESP32 architecture, it is dual core and has a lot of RAM. It has an OLED display built in which would allow me to program a status display which would allow me to see what the system was doing at any given time.  
 
-### The board - based on the Heltec Wifi Kit 32
+### The board
 ![The TimeMachine](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachineBoard.jpg?raw=true)
 
+### Environment
+For development I'm using Visual Studio with the PlatformIO plugin.  Until the capability to set time zone in a web interface is implemented, you should begin by editing TimeMachine.cpp with your correct time zone offset.  Look for these lines:
+
+// Set this to your time zone offset w/o consideration of DST.
+// Eventually add a setting in the web portal.
+int  timeZoneOffsetHours = -5;
+
+-5 is the correct value for eastern time.
+
 ### The Schematic
+
+Here is the wiring schematic.  Note that in my build only one 3.3v lead is connected to the bread board bus.  
+
+If you were going to power this from USB only, you could connect VCC to the 5 volt output.  This board is capable of being powered from a battery, but what I found is the 5V output changes to the level of the battery, resulting in things not working quite right.  5V output will better align to the capabilities of the LM358 and produce a better sine wave output.
+
 ![enter image description here](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachineSchematic.png?raw=true)
 
 ### Parts List
