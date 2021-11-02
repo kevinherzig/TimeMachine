@@ -1,5 +1,5 @@
 # TimeMachine
-## Radio Controlled Clock Synchronization with a 2M range
+## WWVB Controlled Clock NTP/GPS Synchronization with up to a 2M range
 
 ![The TimeMachine](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachine.gif?raw=true)
 #### Features
