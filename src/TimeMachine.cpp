@@ -33,7 +33,7 @@ int timeZoneOffsetHours = -5;
 // GPS config.  If you don't use a GPS then
 // the system will never get a pulse AND the GPS
 // serial monitor code will never get invoked.
-// Note that we don't use TX Pin, we have nothing to 
+// Note that we don't use TX Pin, we have nothing to
 // say to the GPS.
 static const int RXPin = 5, TXPin = 19, PPSPin = 17;
 static const uint32_t GPSBaud = 9600;
@@ -108,7 +108,7 @@ void IRAM_ATTR GPSReadLoop(void *p)
   while (1)
   {
     isAFix = false;
-
+    Log.traceln("Entering GPS Read");
     while (gpsSerialPort.available() && !isAFix)
     {
       Log.traceln("Serial port data available");
@@ -131,23 +131,28 @@ void IRAM_ATTR GPSReadLoop(void *p)
       if (fix.valid.time && fix.valid.date)
       {
         isAFix = true;
-        Log.traceln("Got GPS fix");
+        Log.traceln("Found GPS fix");
       }
     }
 
     if (currentRunMode == NTP && isAFix)
     {
-      Log.info("Switching to GPS run mode");
+      Log.infoln("Switching to GPS run mode");
 
       // Change from Y2K epoch returned by GPS to UNIX epoch used by system
       timeWeAreEncoding = fix.dateTime + 946684800;
       currentRunMode = GPS;
 
       // Pause the GPS when we have a fix since we don't need it anymore
-      Log.verbose("Shutting down GPS");
+      Log.infoln("Shutting down GPS");
       gpsSerialPort.stopListening();
-      Log.info("GPS Thread going to sleep");
+      Log.infoln("GPS Thread going to sleep");
+      
+      // Since the GPS interrupt handler has been giving the semaphore
+      // it's likely set, so clear it before trying to take it
+      xSemaphoreTake(semaphore_GPSSerialReader, 0);
       xSemaphoreTake(semaphore_GPSSerialReader, portMAX_DELAY);
+      Log.infoln("GPS Thread awoken");
       isAFix = false;
       gpsSerialPort.listen();
     }
@@ -210,9 +215,9 @@ void IRAM_ATTR EncoderLoop(void *)
 
   while (1)
   {
-    Log.traceln("Taking semaphore");
+    Log.traceln("Taking encoder semaphore");
     xSemaphoreTake(semaphore_Encoder, portMAX_DELAY);
-    Log.traceln("Semaphore released");
+    Log.traceln("Releasing encoder semaphore");
 
     tickFinish = xTaskGetTickCount();
 
@@ -458,6 +463,7 @@ void setup()
 
   Serial.begin(115200);
   Log.begin(LOG_LEVEL_VERBOSE, &Serial);
+  Log.setShowLevel(false);
 
 #ifdef _HELTEC_H_
   Heltec.begin(true);
