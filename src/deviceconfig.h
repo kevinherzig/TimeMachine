@@ -1,4 +1,3 @@
-#include "TimeEncoderSerial.h"
 
 #define _USE_AD9833_CONST_CARRIER
 
@@ -17,11 +16,6 @@ TimeEncoderAD9833Parms timeEncoderAD9833Parms =
 
 TimeEncoderAD9833 encoder_AD9833;
 #endif
-
-// ---------- Serial Port Monitor Ouptut
-bool USE_DECODER_SERIAL = false;
-// Change your serial baud rate here
-TimeEncoderSerialParms timeEncoderParms = {115200};
 
 // #define _USE_POT_GAIN
 
