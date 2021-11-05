@@ -54,7 +54,7 @@ Here are a few ideas of things that would improve this project.
  - Add code to be more creative with the OLED display, like icons or number of satellites
  - Add a voltage booster (preferably split rail) to the circuit to more appropriately feed the LM358
  - Make encoder calculations a seperate task so that it can be run on a free core
- - Using the Arduino layer adds a lot of overhead and prevents us from properly utilizing both cores since it forces us to do all IO on the same core as the Arduino library.  What it brings is all the hardware drivers that TimeMachine depends on.  We could port out the devices then move it to native espressif32.
+ - Using the Arduino layer adds a lot of overhead and prevents us from properly utilizing both cores since it forces us to do all IO on the same core as the Arduino library.  What it brings is all the hardware drivers that TimeMachine depends on.  We could port out the drivers then move it to native espressif32.
 
 ### Environment
 
