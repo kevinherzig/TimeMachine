@@ -46,14 +46,13 @@ After trying several boards I found that the Heltech WIFI 32 board was almost pe
 ![The TimeMachine](https://github.com/kevinherzig/TimeMachine/blob/master/img/TimeMachineBoard.jpg?raw=true)
 
   ### What's next
-Here are a few ideas of things that would improve this project.
-
- - Add time zone selection in the web config interface
- - It should be trivial to implement the rest of the txttempus radio encoders to allow to broadcast in any station's format
- - Implement a PWM modulator to allow folks that don't need the range to use a simple wire antenna instead of the current complex circuitry 
+ - Add time zone selection in the web config interface.  This only affects the display, the radio only broadcasts in GMT so local tz does not matter.
+ - It should be easy to implement the rest of the txttempus radio encoders to allow to broadcast in any station's format
+ - Implement a PWM modulator to allow folks that don't need the range to use a simple wire antenna connected to the ESP32's DAC instead of the current radio
  - Add code to be more creative with the OLED display, like icons or number of satellites
- - Add a voltage booster (preferably split rail) to the circuit to more appropriately feed the LM358
+ - Add a voltage booster to the circuit to more appropriately feed the LM358
  - Make encoder calculations a seperate task so that it can be run on a free core
+ - Use the internal ADC to measure the output voltage and tune the DAC's automagically
  - Using the Arduino layer adds a lot of overhead and prevents us from properly utilizing both cores since it forces us to do all IO on the same core as the Arduino library.  What it brings is all the hardware drivers that TimeMachine depends on.  We could port out the drivers then move it to native espressif32.
 
 ### Environment
