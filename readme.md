@@ -15,7 +15,7 @@
 
 - Uses the cheap and available ESP32 platform which has two CPU cores and plenty of RAM
 
-- The Heltec board can be powered by and recharge a lithium ion battery to help get
+- The Heltec board can be powered by and recharge a lithium ion battery to run remotely
 
 - Built on top of RTOS / Arduino and uses task/interrupt based programming models
 
