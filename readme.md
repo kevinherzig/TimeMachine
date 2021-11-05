@@ -15,11 +15,13 @@
 
 - Uses the cheap and available ESP32 platform which has two CPU cores and plenty of RAM
 
+- The Heltech board can be powered by and recharge a lithium ion battery to help get
+
 - Built on top of RTOS / Arduino and uses task/interrupt based programming models
 
 - Uses an AD9833 wave generator to generate an accurate 60khz sine wave carrier frequency
 
-- Utilizes an LM358 opamp to create an amplifier
+- Uses a sine wave generator coupled to an amplifier to create a more efficient and less noisy RF transmitter
 
 - Uses a digital dual potentiometer to control amplifier gain and attenuation for modulation
 
@@ -31,11 +33,9 @@
 
 TimeMachine is a project I've been thinking about for years. I have several WWVB based clocks around my house and in the spring time change they have reception issues that cause them not to sync. I've waited up to a couple of weeks in some cases to see if they would eventually pick up a signal to no avail.
 
-  
-
 Over the past few years I've looked at some of the options out there to broadcast a simulated WWVB signal. There are many open source projects on Github that use various methods to accomplish this. There is even an iPhone app that uses the iPhone speaker to generate enough of a signal that it can sync the correct time. All of these required taking down the clocks and placing them very close to whichever device was transmitting. Many of the projects were incomplete with non-working code or hardware. Some were based on Arduino boards that had no RTC or wifi so could only send a pre-programmed time.
 
-After trying several boards I found that the Heltech WIFI 32 board was almost perfect for this task. Based on the ESP32 architecture, it is dual core and has a lot of RAM. It has an OLED display built in which would allow me to program a status display which would allow me to see what the system was doing at any given time.
+After trying several boards I found that the Heltech WIFI 32 board was almost perfect for this task. Based on the ESP32 architecture, it is dual core and has a lot of RAM. It has an OLED display built to allow a status display to see what the system is doing at any given time.  I added a marquee that displays the bits being broadcasted.
 
   ### Call out
   One of the most difficult parts of creating a time transmitter is understanding the math behind how the time is modulated into a radio signal using pulses in the AM signal.  I didn't have the time or patience to write this part myself so I looked to the work others have done already.  I tried the code from several transmitters before settling on using the code from Henner Zeller's [txtempus](https://github.com/hzeller/txtempus).  This project has modulators for many different radio clocks and was easy to implement with a minor change.  It was also the simplest and most comprehensive out of all of them.  
@@ -53,6 +53,8 @@ Here are a few ideas of things that would improve this project.
  - Implement a PWM modulator to allow folks that don't need the range to use a simple wire antenna instead of the current complex circuitry 
  - Add code to be more creative with the OLED display, like icons or number of satellites
  - Add a voltage booster (preferably split rail) to the circuit to more appropriately feed the LM358
+ - Make encoder calculations a seperate task so that it can be run on a free core
+ - Using the Arduino layer adds a lot of overhead and prevents us from properly utilizing both cores since it forces us to do all IO on the same core as the Arduino library.  What it brings is all the hardware drivers that TimeMachine depends on.  We could port out the devices then move it to native espressif32.
 
 ### Environment
 
