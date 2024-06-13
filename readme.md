@@ -1,7 +1,7 @@
 
 # TimeMachine
 
-## WWVB Controlled Clock NTP/GPS Synchronization with up to a 2M range
+## Synchronize your WWVB Controlled Clock using NTP/GPS with a 2M range
 
   
 
